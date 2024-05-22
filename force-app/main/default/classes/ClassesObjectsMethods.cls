@@ -126,16 +126,20 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
+        Integer count = 0;
 
-        /*
-        for () {
-            // get individual characters from the string - hint use substring or split
+        // get individual characters from the string - hint use substring or split
+        List<String> characters = str.toLowerCase().split('');
+
+        for (String character : characters) {
             // check if the character is a vowel
-            // if it is a vowel, increment the result Integer
+            if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u') {
+                // if it is a vowel, increment the result Integer
+                count++;
+            }
         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        
+        return count; // Replace null with the variable you used to store the result
     }
 
     /**
