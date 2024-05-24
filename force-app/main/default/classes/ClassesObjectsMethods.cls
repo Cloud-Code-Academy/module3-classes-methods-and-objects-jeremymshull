@@ -202,9 +202,10 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer generateRandomNumber() {
         // Use Math class to generate number between 50 and 100
+        Integer randomNum = (Integer) Math.roundToLong((Math.random() * 51) + 50);
 
         // Return the random integer
-        return null; // Replace null with the variable you used to store the result
+        return randomNum; // Replace null with the variable you used to store the result
     }
 
     /**
