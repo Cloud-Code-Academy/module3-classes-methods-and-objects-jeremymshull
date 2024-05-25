@@ -211,7 +211,7 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(expectedResult, result, 'The method should return the correct book details');
     }
 
-    /* //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
+    //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
     static void testGenerateBookList() {
         // Create a Book instance
@@ -237,7 +237,6 @@ public with sharing class ClassesObjectsMethodsTest {
         Assert.areEqual(352, result[0].pages, 'Pages of book at index 0 should match');
         Assert.areEqual(256, result[1].pages, 'Pages of book at index 1 should match');
     }
-    */
 
     /* //UNCOMMENT TEST METHODS BELOW ONCE THE BOOK AND PERSON CLASSES ARE SET UP
     @IsTest
