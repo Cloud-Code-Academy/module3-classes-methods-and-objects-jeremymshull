@@ -94,14 +94,16 @@ public with sharing class ClassesObjectsMethods {
     public static Integer countVowels(String str) {
         // Initialize the result Integer
         Integer count = 0;
+        Set<String> vowels = new Set<String>{
+            'a', 'e', 'i', 'o', 'u'
+        };
 
         // get individual characters from the string - hint use substring or split
-        List<String> characters = str.toLowerCase().split('');
+        List<String> characters = str.split('');
 
         for (String character : characters) {
             // check if the character is a vowel
-            if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u') {
-                // if it is a vowel, increment the result Integer
+            if (vowels.contains(character.toLowerCase())) {
                 count++;
             }
         }
