@@ -417,10 +417,9 @@ public with sharing class ClassesObjectsMethods {
         // Loop through each name in the provided list of names
         for (String name : names) {
             // Create a new Person object for each name
-            Person p = new Person(name, age);
-            persons.add(p);
-            
             // Add the new Person object to the list of Person objects
+            persons.add(new Person(name, age));
+            
         }
             
         
