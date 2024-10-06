@@ -398,10 +398,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Person createPerson(String name, Integer age) {
         // Create a new instance of the Person class using the provided name and age
-        Person p = new Person(name, age);
-        
         // Return the new instance of the Person class
-        return p; // Replace null with the variable you used to store the result
+        return new Person(name, age); // Replace null with the variable you used to store the result
     }
 
     /**
