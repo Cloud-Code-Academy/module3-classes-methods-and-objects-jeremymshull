@@ -440,16 +440,11 @@ public with sharing class ClassesObjectsMethods {
      * @return The Person object of the older person.
      */
     public static Person getOlderPerson(Person person1, Person person2) {
-        Integer p1Age = person1.getAge();
-        Integer p2Age = person2.getAge();
+        if (person1.getAge() > person2.getAge()) {
+            return person1;
+        } 
+        return person2;
 
-        if (p1Age > p2Age) {
-            return person1;
-        } else if (p2Age > p1Age) {
-            return person2;
-        } else {
-            return person1;
-        }
 
         // Replace null with the variable you used to store the result
     }
