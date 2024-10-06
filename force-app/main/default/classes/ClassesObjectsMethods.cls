@@ -39,31 +39,12 @@ public with sharing class ClassesObjectsMethods {
      * @return A list containing the length of the string, a substring of the string, and the string in lower case.
      */
     public static List<String> practiceStringMethods() {
-        // Initialize a String with 'Hello, Salesforce!'
-        String myString = 'Hello, Salesforce!';
-        
-        // Get the length of the String
-        Integer stringLength = myString.length();
-
-        // Get a substring of the String of the first 5 characters
-        String stringSub = myString.substring(0, 5);
-
-        // Convert the String to lower case
-        String stringToLower = myString.toLowerCase();
-        
-        // Return the list with the string data
-        List<String> stringMethods = new List<String>();
-
-        // In the first position add the string length
-        stringMethods.add(String.valueOf(stringLength));
-
-        // In the second position add the substring
-        stringMethods.add(stringSub);
-
-        // In the third position add the string in lower case
-        stringMethods.add(stringToLower);
-
-        return stringMethods; // Replace null with the variable you used to store the result
+        List<String> strings = new List<String>();
+        String helloSalesforce = 'Hello, Salesforce!';
+        strings.add(String.valueOf(helloSalesforce.length()));
+        strings.add(helloSalesforce.substring(0, 5));
+        strings.add(helloSalesforce.toLowerCase());
+        return strings;
     }
 
     /**
@@ -97,23 +78,9 @@ public with sharing class ClassesObjectsMethods {
      * @return A string consisting of only unique words from the input sentence.
      */
     public static String removeDuplicateWords(String sentence) {
-        // Split the sentence into words
-        List<String> words = sentence.split(' ');
-
-        // Create a set to store the unique words
-        Set<String> uniqueWords = new Set<String>();
-
-        // Add each word to the set
-        uniqueWords.addAll(words);
-
-        // Join the unique words back into a sentence
-        String mySentence = '';
-        for (String word : uniqueWords) {
-            mySentence += word + ' ';
-        }
-
-        // Return the sentence with unique words
-        return mySentence.trim(); // Replace null with the variable you used to store the result
+        Set<String> uniqueWords = new Set<String>(sentence.split(' '));
+        List<String> uniqueWordsList = new List<String>(uniqueWords);
+        return String.join(uniqueWordsList, ' ');
     }
 
     /**
@@ -127,14 +94,16 @@ public with sharing class ClassesObjectsMethods {
     public static Integer countVowels(String str) {
         // Initialize the result Integer
         Integer count = 0;
+        Set<String> vowels = new Set<String>{
+            'a', 'e', 'i', 'o', 'u'
+        };
 
         // get individual characters from the string - hint use substring or split
-        List<String> characters = str.toLowerCase().split('');
+        List<String> characters = str.split('');
 
         for (String character : characters) {
             // check if the character is a vowel
-            if (character == 'a' || character == 'e' || character == 'i' || character == 'o' || character == 'u') {
-                // if it is a vowel, increment the result Integer
+            if (vowels.contains(character.toLowerCase())) {
                 count++;
             }
         }
@@ -183,15 +152,9 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
         // Square the input numbers using the Math.pow() function
-        Double aSquared = Math.pow(a, 2);
-        Double bSquared = Math.pow(b, 2);
-
         // Calculate the absolute difference using Math.abs() function
-        Double difference = aSquared - bSquared;
-        Double absoluteDifference = Math.abs(difference);
-
         // Return the result
-        return absoluteDifference; // Replace null with the variable you used to store the result
+        return Math.abs(Math.pow(a, 2) - Math.pow(b, 2)); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -202,10 +165,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer generateRandomNumber() {
         // Use Math class to generate number between 50 and 100
-        Integer randomNum = (Integer) Math.roundToLong((Math.random() * 51) + 50);
-
         // Return the random integer
-        return randomNum; // Replace null with the variable you used to store the result
+        return Math.round((Math.random() * 51) + 50); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -317,13 +278,9 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String createAndGetBookDetails() {
         // Create a Book object with title "A Brief History of Time" and author "Stephen Hawking"
-        Book myBook = new Book('A Brief History of Time', 'Stephen Hawking');
-
         // Call the getBookDetails method on the book object to get the details of the book
-        String bookDetails = myBook.getBookDetails();
-
         // Return the details of the book
-        return bookDetails; // Replace null with the variable you used to store the result
+        return new Book('A Brief History of Time', 'Stephen Hawking').getBookDetails(); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -417,17 +374,17 @@ public with sharing class ClassesObjectsMethods {
     public static List<String> personDetails() {
         List<String> results = new List<String>();
         // Create a new instance of Person class
-        Person p = new Person('John Doe', 28);
+        Person person = new Person('John Doe', 28);
         // Name the person 'John Doe' and set the age to 28
 
         // Add the details of the person using the introduceYourself method
-        results.add(p.introduceYourself());
+        results.add(person.introduceYourself());
 
         // Get the name of the person using the getter method and add it to the list
-        results.add(p.getName());
+        results.add(person.getName());
 
         // Get the age of the person using the getter method and add it to the list
-        results.add(String.valueOf(p.getAge()));
+        results.add(String.valueOf(person.getAge()));
         
         return results; // Replace null with the variable you used to store the result
     }
@@ -441,10 +398,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Person createPerson(String name, Integer age) {
         // Create a new instance of the Person class using the provided name and age
-        Person p = new Person(name, age);
-        
         // Return the new instance of the Person class
-        return p; // Replace null with the variable you used to store the result
+        return new Person(name, age); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -462,10 +417,9 @@ public with sharing class ClassesObjectsMethods {
         // Loop through each name in the provided list of names
         for (String name : names) {
             // Create a new Person object for each name
-            Person p = new Person(name, age);
-            persons.add(p);
-            
             // Add the new Person object to the list of Person objects
+            persons.add(new Person(name, age));
+            
         }
             
         
@@ -486,16 +440,11 @@ public with sharing class ClassesObjectsMethods {
      * @return The Person object of the older person.
      */
     public static Person getOlderPerson(Person person1, Person person2) {
-        Integer p1Age = person1.getAge();
-        Integer p2Age = person2.getAge();
+        if (person1.getAge() > person2.getAge()) {
+            return person1;
+        } 
+        return person2;
 
-        if (p1Age > p2Age) {
-            return person1;
-        } else if (p2Age > p1Age) {
-            return person2;
-        } else {
-            return person1;
-        }
 
         // Replace null with the variable you used to store the result
     }
